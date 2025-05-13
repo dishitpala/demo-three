@@ -1,0 +1,73 @@
+# Dependencies
+## Avoid any node_modules folders anywhere in the repo; see see https://docs.wpvip.com/how-tos/manage-dependencies/#version-management
+node_modules
+
+/plugins
+
+# Built-in; ship with vip-go-mu-plugins
+/plugins/akismet/
+/plugins/advanced-post-cache/
+/plugins/cron-control/
+/plugins/debug-bar/
+/plugins/debug-bar-cron/
+/plugins/gutenberg-ramp/
+/plugins/jetpack/
+/plugins/jetpack-force-2fa/
+/plugins/lightweight-term-count-update/
+/plugins/query-monitor/
+/plugins/rewrite-rules-inspector/
+/plugins/two-factor/
+/plugins/vaultpress/
+/plugins/wp-component-viewer/
+
+# Uploads directory
+/uploads/
+
+# Leftover core/plugin upgrade files
+/upgrade/
+
+# mu-plugins; these are managed at the platform-level
+/mu-plugins/
+/client-mu-plugins/one-novanta/vendor/
+
+# drop-ins; these are managed at the platform-level
+/object-cache.php
+/db.php
+
+# Ignore temporary OS files
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+debug.log
+.phpunit.result.cache
+
+# Ignore editor config
+.idea/
+.vscode/
+
+# Other files and folders
+*.map
+
+# Local PHPCS configuration files
+.phpcs.xml
+phpcs.xml
+
+# Composer (repo root only)
+/vendor/
+
+# Extra directories
+.discovery/
+
+# Excluded directories
+/dist/
+themes/one-novanta-theme/build/
+/wordpress/
+
+# Environment file.
+.env
+
+# Client mu-plugins ignore files.
+client-mu-plugins/.env.php
