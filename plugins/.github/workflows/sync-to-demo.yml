@@ -1,0 +1,33 @@
+name: Sync to demo-three
+
+on:
+  push:
+    branches:
+      - main
+      - stage
+      - develop
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git
+        run: |
+          git config --global user.name "dishitpala"
+          git config --global user.email "dishitpala@gmail.com"
+
+      - name: Sync plugins to:- demo-three
+        run: |
+          git clone https://dishitpala:${{ secrets.DEMO_PLUGINS_TOKEN }}@github.com/dishitpala/demo-three.git "/home/runner/work/demo-three"
+          cd "/home/runner/work/demo-three"
+          git checkout ${{ github.ref_name }}
+          rm -rf .gitignore
+          rm -rf plugins
+          git clone https://dishitpala:${{ secrets.DEMO_PLUGINS_TOKEN }}@github.com/dishitpala/demo-plugins.git plugins
+          cd plugins
+          git checkout ${{ github.ref_name }}
+          rm -rf .git
+          cd ../
+          git add ./plugins
+          git commit -m "Sync from demo-plugins" || echo "Nothing to commit"
+          git push origin ${{ github.ref_name }}
