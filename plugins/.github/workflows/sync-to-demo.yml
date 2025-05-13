@@ -1,0 +1,32 @@
+name: Sync to demo-three
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout demo-plugins
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Clone demo-three
+        run: |
+          git clone https://github.com/dishitpala/demo-three.git "/home/runner/work/demo-three"
+          cd "/home/runner/work/demo-three"
+          rm -rf plugins
+          mkdir plugins && cd plugins
+          git clone https://github.com/dishitpala/demo-plugins.git .
+          rm -rf .git
+          ls -al
+          pwd
+          git status
+          git commit -m "Sync from demo-plugins"
+          git push origin main
