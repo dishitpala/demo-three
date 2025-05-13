@@ -5,6 +5,8 @@ node_modules
 /package.json
 /package-lock.json
 
+/plugins
+
 # Built-in; ship with vip-go-mu-plugins
 /plugins/akismet/
 /plugins/advanced-post-cache/
